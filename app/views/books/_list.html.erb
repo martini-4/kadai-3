@@ -1,0 +1,27 @@
+
+	<div class="new">
+
+		<h2>New book</h2>
+		<div  style="width: 100%">
+		<%= form_for(book_new) do |t| %>
+		
+
+		<h4>Title</h4>
+
+		<div style="">
+		<%= t.text_field :title, class:"col-lg-12" %>
+		</div>
+
+		<h4 style="margin: 10px 0;">Opinion</h4>
+
+		<div style="">
+		<%= t.text_area :body, class:"col-lg-12" %>
+		</div>
+
+		<%= t.submit 'Create Book', class:"col-lg-12 botan" %>
+
+		<% end %>
+		</div>
+
+
+	</div>

@@ -1,0 +1,66 @@
+<div class="container" style="">
+	<div class="row" style="">
+
+		<div class="col-lg-3">
+				<div class="user">
+
+				<h2>User info</h2>
+
+				<div class="user-image">
+					<%= attachment_image_tag @user, :profile_image, size: "100x100", class:'',format:'jpeg', fallback: 'no_image.jpg' %>
+				</div>
+
+				<div class="name">
+					<table style="width: 100%; height: 100px;">
+						<tr style="border-style: solid; border-width: 0.3px 0;">
+							<td>name</td>
+							<td><%= @user.name %></td>
+						</tr>
+						<tr style="">
+							<td>introduction</td>
+							<td><%= @user.introduction %></td>
+						</tr>
+					</table>
+				</div>
+				<% if @user == current_user %>
+			<%= link_to edit_user_path(current_user) do %>
+		    <span class="glyphicon glyphicon-wrench user_edit" aria-hidden="true" style="width: 100%; border: 1px solid black; text-align: center; line-height: 30px; border-radius: 10px; color: #666;"></span>
+	        <% end %>
+		<% else %>
+		    <%= link_to user_path(current_user) do %>
+		    <span class="glyphicon glyphicon-wrench user_edit" aria-hidden="true" style="width: 100%; border: 1px solid black; text-align: center; line-height: 30px; border-radius: 10px; color: #666;"></span>
+	        <% end %>
+	    <% end %>
+		</div>
+				<%= render 'books/list', book_new: @book_new %>
+		</div>
+		<div class="col-lg-9">
+			<h2>Books</h2>
+
+			<table class="" style="width: 100%">
+				<tr>
+					<th></th>
+					<th>Title</th>
+					<th>Opinion</th>
+				</tr>
+				<% @user.books.each do |book| %>
+					<tr style="border-style: solid; border-width: 1px 0;">
+						<td>
+							<%= attachment_image_tag book.user, :profile_image, size: "60x60", class:'',format:'jpeg', fallback: 'no_image.jpg' %>
+						</td>
+						<td>
+							<%= link_to book.title, book_path(book), class: 'link4' %>
+						</td>
+						<td>
+							<%= book.body %>
+						</td>
+					</tr>
+
+				<% end %>
+			</table>
+		</div>
+	</div>
+
+</div>
+
+<p style="float: right; margin-right: 15%;">CopyRight Infratop.inc</p>

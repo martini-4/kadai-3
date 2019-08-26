@@ -1,0 +1,11 @@
+
+    <% if error.errors.any? %>
+  <div class="alert alert-warning error">
+    <h2><%= error.errors.count %> error prohibited this obj from being saved:</h2>
+    <ul style="margin-left: 10%;">
+      <% error.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

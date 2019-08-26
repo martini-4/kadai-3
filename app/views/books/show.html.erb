@@ -1,0 +1,62 @@
+<div class="container" style="">
+	<div class="row" style="">
+
+		<div class="col-lg-3">
+			<div class="user">
+
+				<h2>User info</h2>
+
+				<div class="user-image">
+					<%= attachment_image_tag @user, :profile_image, size: "100x100", class:'',format:'jpeg', fallback: 'no_image.jpg' %>
+				</div>
+
+				<div class="name">
+					<table style="width: 100%; height: 100px;">
+						<tr style="border-style: solid; border-width: 0.3px 0;">
+							<td>name</td>
+							<td><%= @user.name %></td>
+						</tr>
+						<tr style="">
+							<td>introduction</td>
+							<td><%= @user.introduction %></td>
+						</tr>
+					</table>
+				</div>
+				<%= link_to edit_user_path(current_user) do %>
+		      <span class="glyphicon glyphicon-wrench user_edit" aria-hidden="true" style="width: 100%; border: 1px solid black; text-align: center; line-height: 30px; border-radius: 10px; color: #666;"></span>
+		      <% end %>
+			</div>
+				<%= render 'books/list', book_new: @book_new %>
+		</div>
+		<div class="col-lg-9">
+			<h2>Book detail</h2>
+
+			<table class="col-lg-12" style="">
+				<tr style="border-top: solid; border-width: 1px;">
+					<td>
+						<%= attachment_image_tag @user, :profile_image, size: "80x80", class:'', format:'jpeg', fallback: 'no_image.jpg' %><br>
+						<%= link_to @user.name, user_path(@book.user_id) %>
+					</td>
+					<td>
+						<%= @book.title %>
+					</td>
+					<td>
+						<%= @book.body %>
+					</td>
+					<% if @user == current_user %>
+					<td>
+						<%= link_to 'Edit', edit_book_path(params[:id]), class:'edit' %>
+					</td>
+					<td>
+						<%= link_to 'Destroy', @book, method: :delete, 'data-confirm' => '本当に消しますか？', class: 'destroy' %>
+					</td>
+					<% end %>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+</div>
+
+
+<p style="float: right; margin-right: 15%;">CopyRight Infratop.inc</p>

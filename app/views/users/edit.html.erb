@@ -1,0 +1,28 @@
+<div class="useredit container">
+
+	<h2>User info</h2>
+
+	<%= render 'layouts/error', error: @user %>
+	<%= form_for(@user) do |f| %>
+
+	<div class="name-edit">
+		<h5>Name</h5>
+		<%= f.text_field :name %>
+	</div>
+
+	<div class="image-edit">
+		<%= f.attachment_field :profile_image %>
+	</div>
+
+	<div class="introduction">
+		<h5>Introduction</h5>
+		<%= f.text_area :introduction %>
+	</div>
+
+	<%= f.submit 'Update User' %>
+
+	<% end %>
+
+</div>
+
+<p style="float: right; margin-right: 15%;">CopyRight Infratop.inc</p>

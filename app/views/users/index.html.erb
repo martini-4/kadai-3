@@ -1,0 +1,37 @@
+<div class="container" style="">
+	<div class="row" style="">
+
+		<div class="col-lg-3">
+				<%= render 'users/list', user: @user %>
+				<%= render 'books/list', book_new: @book_new %>
+		</div>
+		<div class="col-lg-9">
+			<h2>Users</h2>
+
+			<table class="" style="width: 100%">
+				<tr>
+					<th>image</th>
+					<th>name</th>
+					<th></th>
+				</tr>
+				<% @user_index.each do |f| %>
+				<tr style="border-style: solid; border-width: 1px 0;">
+					<td>
+						<%= attachment_image_tag f, :profile_image, size: "60x60", class:'',format:'jpeg', fallback: 'no_image.jpg' %>
+					</td>
+					<td>
+						<%= f.name %>
+					</td>
+					<td>
+						<%= link_to 'Show', user_path(f) %>
+					</td>
+				</tr>
+
+				<% end %>
+			</table>
+		</div>
+	</div>
+
+</div>
+
+<p style="float: right; margin-right: 15%;">CopyRight Infratop.inc</p>
